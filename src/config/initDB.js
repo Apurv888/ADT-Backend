@@ -46,6 +46,14 @@ const createTableIfNotExists = async () => {
         )
       `);
       console.log("✅ Table 'products' created successfully!");
+
+      await db.query(`INSERT INTO products (productname,productdescription) VALUES ('Essence', 'Essence Description')`);
+
+      await db.query(`INSERT INTO products (productname,productdescription) VALUES ('Seven','Seven Description')`);
+
+      await db.query(`INSERT INTO products (productname,productdescription) VALUES ('Beacon','Beacon Description')`);
+
+      await db.query(`INSERT INTO products (productname,productdescription) VALUES ('Eve','Eve Description')`);
     } 
 
     // Check if 'products' table exists
@@ -53,7 +61,7 @@ const createTableIfNotExists = async () => {
     if (itemsTable.length === 0) {
       await db.query(`
         CREATE TABLE items (
-          itemid INT AUTO_INCREMENT PRIMARY KEY,
+          itemid VARCHAR(50) PRIMARY KEY,
           productid INT,
           serialnumber VARCHAR(100),
           receiveddate date,
@@ -65,6 +73,12 @@ const createTableIfNotExists = async () => {
         )
       `);
       console.log("✅ Table 'products' created successfully!");
+
+      // await db.query(`INSERT INTO ITEMS (productid, serialnumber, receiveddate, phoneno,simnumber) VALUES (1,'SERIAL001','2025-02-08','64220889913','20000330001')`);
+      // await db.query(`INSERT INTO ITEMS (productid, serialnumber, receiveddate, phoneno,simnumber) VALUES (2,'SERIAL002','2025-02-08','64220889912','20000330002')`);
+      // await db.query(`INSERT INTO ITEMS (productid, serialnumber, receiveddate, phoneno,simnumber) VALUES (2,'SERIAL003','2025-02-08','64220889911','20000330003')`);
+      // await db.query(`INSERT INTO ITEMS (productid, serialnumber, receiveddate, phoneno,simnumber) VALUES (1,'SERIAL004','2025-02-08','64220889910','20000330004')`);
+      // await db.query(`INSERT INTO ITEMS (productid, serialnumber, receiveddate, phoneno,simnumber) VALUES (1,'SERIAL005','2025-02-08','64220889809','20000330005')`);
     } 
   } catch (error) {
     console.error("❌ Error creating tables:", error);
