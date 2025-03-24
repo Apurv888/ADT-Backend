@@ -16,7 +16,7 @@ exports.insertItem = async (req,res) => {
   const { productId, serialNumber, receivedDate, phoneNo, simNumber } = req.body;
 
   try {
-    const insertArray = await db.query(`INSERT INTO ITEMS (productid, serialnumber, receiveddate, phoneno,simnumber) VALUES (?,?,?,?,?)`,[productId,serialNumber,receivedDate,phoneNo,simNumber]);
+    const insertArray = await db.query(`INSERT INTO items (productid, serialnumber, receiveddate, phoneno,simnumber) VALUES (?,?,?,?,?)`,[productId,serialNumber,receivedDate,phoneNo,simNumber]);
 
     if(insertArray[0].affectedRows > 0){
       let response = {status : 200, isInserted:true, message: "Item inserted successfully!"};
